@@ -200,9 +200,9 @@ func (r *RequestAccessor) EventToRequest(req events.APIGatewayProxyRequest) (*ht
 		}
 	}
 
-  httpRequest.RequestURI = httpRequest.URL.RequestURI()
+	httpRequest.RequestURI = httpRequest.URL.RequestURI()
 
-  return httpRequest, nil
+	return httpRequest, nil
 }
 
 func addToHeader(req *http.Request, apiGwRequest events.APIGatewayProxyRequest) (*http.Request, error) {
@@ -249,7 +249,8 @@ func GetStageVarsFromContext(ctx context.Context) (map[string]string, bool) {
 type ctxKey struct{}
 
 type requestContext struct {
-	lambdaContext       *lambdacontext.LambdaContext
-	gatewayProxyContext events.APIGatewayProxyRequestContext
-	stageVars           map[string]string
+	lambdaContext         *lambdacontext.LambdaContext
+	gatewayProxyContext   events.APIGatewayProxyRequestContext
+	gatewayProxyContextV2 events.APIGatewayV2HTTPRequestContext
+	stageVars             map[string]string
 }
